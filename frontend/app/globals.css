@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+:root{
+  --bg:#0B1220;
+  --bg-2:#0E1626;
+  --ink:#E6EAF2;
+  --muted:#9AA3B2;
+  --panel:rgba(255,255,255,0.04);
+  --border:rgba(255,255,255,0.10);
+  --ring:rgba(225,29,72,.35);
+  --accent:#E11D48;
+  --shadow:0 10px 40px rgba(0,0,0,.35);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(1200px 800px at 80% -10%, #1C2A44, transparent 60%),
+    radial-gradient(900px 700px at -10% 20%, #111C30, transparent 55%),
+    var(--bg);
+}
+
+/* ===== Shell (Sidebar + Main) ===== */
+.shell{
+  min-height:100dvh;
+  display:grid;
+  grid-template-columns:260px 1fr;
+}
+
+/* Sidebar */
+.sidebar{
+  position:sticky; top:0; height:100dvh;
+  border-right:1px solid var(--border);
+  padding:18px 12px;
+  display:flex; flex-direction:column; gap:12px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent 22%), var(--bg-2);
+}
+
+.sideBrand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.04em}
+.sideDot{width:10px; height:10px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px rgba(225,29,72,.15)}
+.sideNav{display:flex; flex-direction:column; gap:6px; margin-top:4px}
+
+.sideItem{
+  display:flex; align-items:center; gap:10px;
+  padding:10px 12px; border-radius:10px;
+  color:var(--ink); text-decoration:none;
+  border:1px solid transparent;
+}
+.sideItem:hover{background:#101A2C}
+.sideItem.active{background:#101A2C; border-color:var(--border)}
+.sideItem.disabled{opacity:.55; cursor:not-allowed}
+
+.pill{
+  width:22px; height:22px; border-radius:8px;
+  display:grid; place-items:center;
+  background:var(--panel); border:1px solid var(--border); font-weight:700;
+}
+.dot{width:8px; height:8px; border-radius:50%; background:var(--muted)}
+.sideFoot{margin-top:auto; color:var(--muted); font-size:12px}
+
+/* Main */
+.main{padding:32px; display:flex; justify-content:center}
+.container{width:100%; max-width:980px}
+
+/* ===== Hero / Result ===== */
+.hero, .result{width:100%}
+.heroTitle{font-weight:800; font-size:32px; margin:14px 0 6px; text-align:center}
+.heroSub{color:var(--muted); margin:0 0 20px; text-align:center}
+.resultTitle{font-weight:800; font-size:28px; margin:18px 0 8px; text-align:center}
+.resultLink a{color:#B6C4FF; text-decoration:underline; word-break:break-all}
+
+/* ===== Card & inputs ===== */
+.card{
+  width:100%; background:var(--panel);
+  border:1px solid var(--border); border-radius:16px;
+  box-shadow:var(--shadow); backdrop-filter: blur(8px);
+}
+.inputRow{display:flex; gap:12px; align-items:center; padding:16px}
+.input{
+  flex:1; padding:14px 16px; border-radius:12px; outline:none;
+  background:#0C1527; color:var(--ink);
+  border:1px solid var(--border);
+}
+.input:focus{border-color:#27344C; box-shadow:0 0 0 4px var(--ring)}
+.button{
+  padding:14px 18px; border-radius:12px; border:1px solid var(--accent);
+  background:var(--accent); color:white; font-weight:700; cursor:pointer;
+}
+.button:hover{filter:brightness(1.05)}
+.button.ghost{background:transparent; border-color:#2A3751; color:var(--ink)}
+.button.ghost:hover{background:#101A2C}
+
+.summaryCard{padding:16px}
+.summaryText{white-space:pre-wrap; line-height:1.65; margin:0; color:#D7DEEA; text-align:left}
+
+/* Actions */
+.actions{display:flex; gap:10px; justify-content:center; margin-top:16px; flex-wrap:wrap}
+
+/* Footer */
+.foot{width:100%; color:var(--muted); font-size:13px; padding:24px 0; text-align:center}
+
+/* ===== Mobile ===== */
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .sidebar{
+    position:sticky; top:0; height:auto; z-index:10;
+    flex-direction:row; align-items:center; gap:8px;
+    border-right:0; border-bottom:1px solid var(--border);
+  }
+  .sideNav{flex-direction:row; gap:8px; margin-left:auto; overflow-x:auto}
+  .sideFoot{display:none}
+  .main{padding:16px}
+  .heroTitle{font-size:26px}
+  .resultTitle{font-size:24px}
+}
+
