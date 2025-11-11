@@ -1,0 +1,20 @@
+# ---- Hypercut ignores ----
+# Node / Next
+frontend/node_modules/
+frontend/.next/
+frontend/.vercel/
+frontend/dist/
+frontend/out/
+
+# Python
+backend/__pycache__/
+backend/.venv/
+venv/
+*.pyc
+
+# Env & misc
+.env
+.env.*
+*.log
+.DS_Store
+Thumbs.db
